@@ -149,9 +149,8 @@ def subscribe_alert(request):
 @api_view(['GET'])
 def get_history(request, city_name):
     try:
-        city, created = City.objects.get_or_create(
-    name=city_name.title()
-)
+        # Replace with this
+        city = City.objects.get(name__iexact=city_name)
         records = AirQualityRecord.objects.filter(
             city=city
         ).order_by('-recorded_at')[:20]
@@ -171,7 +170,11 @@ def get_history(request, city_name):
             {"error": "City not found"},
             status=status.HTTP_404_NOT_FOUND
         )
-
+    except Exception as e:
+        return Response(
+            {"error": str(e)},
+            status=status.HTTP_500_INTERNAL_SERVER_ERROR
+        )
 
 # ─────────────────────────────────────────
 # 6. DASHBOARD DATA
