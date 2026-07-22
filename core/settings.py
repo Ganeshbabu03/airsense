@@ -127,12 +127,14 @@ STATIC_URL = 'static/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 465          # Change from 587 to 465
-EMAIL_USE_SSL = True      # Change from EMAIL_USE_TLS to EMAIL_USE_SSL
-EMAIL_USE_TLS = False     # Set this to False
-EMAIL_HOST_USER = os.environ.get('aarumugam42104@gmail.com')
-EMAIL_HOST_PASSWORD = os.environ.get('fueogbvslzjtwwsk')
-DEFAULT_FROM_EMAIL = os.environ.get('AirSense@gmail.com')
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False  
+# Open .env and verify exactly:
+EMAIL_HOST_USER="aarumugam42104@gmail.com"
+EMAIL_HOST_PASSWORD="fueogbvslzjtwwsk"
+DEFAULT_FROM_EMAIL = 'aarumugam42104@gmail.com'  # 16 chars, no spaces
+
 
 
 # REST Framework settings
